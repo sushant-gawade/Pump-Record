@@ -3,14 +3,7 @@ START TRANSACTION;
 SET time_zone = "+00:00";
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
--- ########################################################
--- START: Content from petrol_db.sql (Database: petrol_db)
--- ########################################################
 
 CREATE DATABASE IF NOT EXISTS `petrol_db`;
 USE `petrol_db`;
@@ -20,10 +13,7 @@ START TRANSACTION;
 SET time_zone = "+00:00";
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+
 
 CREATE TABLE `config` (
   `id` int(11) NOT NULL DEFAULT 1,
@@ -76,19 +66,7 @@ ALTER TABLE `stock`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 
--- ########################################################
--- END: Content from petrol_db.sql
--- ########################################################
-
-----------------------------------------------------------
-
--- ########################################################
--- START: Content from labour_management_db.sql (Database: labour_management_db)
--- ########################################################
 
 CREATE DATABASE IF NOT EXISTS `labour_management_db`;
 USE `labour_management_db`;
@@ -98,10 +76,6 @@ START TRANSACTION;
 SET time_zone = "+00:00";
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 CREATE TABLE `attendance` (
   `attendance_id` int(11) NOT NULL,
@@ -203,19 +177,7 @@ ALTER TABLE `payments`
   ADD CONSTRAINT `fk_labour_payment` FOREIGN KEY (`labour_id`) REFERENCES `labours` (`labour_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 
--- ########################################################
--- END: Content from labour_management_db.sql
--- ########################################################
-
-----------------------------------------------------------
-
--- ########################################################
--- START: Content from account_management.sql (Database: account_manager_db)
--- ########################################################
 
 CREATE DATABASE IF NOT EXISTS `account_manager_db`;
 USE `account_manager_db`;
@@ -248,15 +210,6 @@ ALTER TABLE `transactions`
   REFERENCES `profiles` (`id`) 
   ON DELETE CASCADE;
 
--- ########################################################
--- END: Content from account_management.sql
--- ########################################################
-
-----------------------------------------------------------
-
--- ########################################################
--- START: Content from diesel_db.sql (Database: diesel_db)
--- ########################################################
 
 CREATE DATABASE IF NOT EXISTS `diesel_db`;
 USE `diesel_db`;
@@ -266,10 +219,7 @@ START TRANSACTION;
 SET time_zone = "+00:00";
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+
 
 CREATE TABLE `config` (
   `id` int(11) NOT NULL DEFAULT 1,
@@ -323,10 +273,3 @@ ALTER TABLE `stock`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-
--- ########################################################
--- END: Content from diesel_db.sql
--- ########################################################
