@@ -1,15 +1,5 @@
--- --------------------------------------------------------
--- SQL File to Create Database and Tables for Account Management System
--- --------------------------------------------------------
-
--- 1. CREATE AND SELECT THE DATABASE
 CREATE DATABASE IF NOT EXISTS `account_manager_db`;
 USE `account_manager_db`;
-
--- --------------------------------------------------------
-
--- 2. Create the Profiles Table
--- This table stores information about the individuals being tracked.
 
 CREATE TABLE `profiles` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
@@ -19,12 +9,6 @@ CREATE TABLE `profiles` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `mobile` (`mobile`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
--- 3. Create the Transactions Table
--- This table stores all financial movements (Credit/Debit).
--- The 'type' column is set to NOT NULL to enforce data entry.
 
 CREATE TABLE `transactions` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
@@ -39,16 +23,9 @@ CREATE TABLE `transactions` (
   KEY `profile_id` (`profile_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
-
--- 4. Add Foreign Key Constraint to Transactions Table
--- This ensures data integrity and automatically deletes associated transactions 
--- when a parent profile is deleted (ON DELETE CASCADE).
-
 ALTER TABLE `transactions`
-  ADD CONSTRAINT `fk_profile_transaction` 
-  FOREIGN KEY (`profile_id`) 
-  REFERENCES `profiles` (`id`) 
+  ADD CONSTRAINT `fk_profile_transaction`
+  FOREIGN KEY (`profile_id`)
+  REFERENCES `profiles` (`id`)
   ON DELETE CASCADE;
 
--- --------------------------------------------------------
