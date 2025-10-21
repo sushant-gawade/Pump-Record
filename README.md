@@ -16,5 +16,5 @@ Built using **PHP**, **MySQL**, **HTML**, **CSS**, and **JavaScript**.
 
 ## 📦 Installation Steps
 
-using this link download software
+using this link download xampp software
 https://www.apachefriends.org/
