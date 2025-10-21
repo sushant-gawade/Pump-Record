@@ -28,11 +28,15 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `attendance` (
-  `attendance_id` int(11) NOT NULL,
+  `attendance_id` int(11) NOT NULL AUTO_INCREMENT,
   `labour_id` int(11) NOT NULL,
   `attendance_date` date NOT NULL,
   `status` enum('P','A') NOT NULL COMMENT 'P=Present, A=Absent',
-  `recorded_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `recorded_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`attendance_id`),
+  UNIQUE KEY `unique_attendance` (`labour_id`,`attendance_date`),
+  KEY `fk_labour_attendance_idx` (`labour_id`),
+  CONSTRAINT `fk_labour_attendance` FOREIGN KEY (`labour_id`) REFERENCES `labours` (`labour_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -63,10 +67,12 @@ INSERT INTO `attendance` (`attendance_id`, `labour_id`, `attendance_date`, `stat
 --
 
 CREATE TABLE `labours` (
-  `labour_id` int(11) NOT NULL,
+  `labour_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `mobile_number` varchar(15) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`labour_id`),
+  UNIQUE KEY `mobile_number_UNIQUE` (`mobile_number`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -86,12 +92,15 @@ INSERT INTO `labours` (`labour_id`, `name`, `mobile_number`, `created_at`) VALUE
 --
 
 CREATE TABLE `payments` (
-  `payment_id` int(11) NOT NULL,
+  `payment_id` int(11) NOT NULL AUTO_INCREMENT,
   `labour_id` int(11) NOT NULL,
   `paid_amount` decimal(10,2) NOT NULL,
   `note` text DEFAULT NULL,
   `payment_date` date NOT NULL,
-  `recorded_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `recorded_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`payment_id`),
+  KEY `fk_labour_payment_idx` (`labour_id`),
+  CONSTRAINT `fk_labour_payment` FOREIGN KEY (`labour_id`) REFERENCES `labours` (`labour_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
