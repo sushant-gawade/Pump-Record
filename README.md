@@ -42,3 +42,6 @@ setup is ready now
  
 go with apach admin click their and acess your site. 
 
+labour done
+petrol done
+
